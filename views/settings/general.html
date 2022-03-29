@@ -1,0 +1,105 @@
+{{define "settingsEdit"}}
+{{template "_header_settings.html"}}
+{{template "_header.html"}}
+{{template "_sidebar.html"}}
+{{template "_other.html"}}
+
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h4 class="text-themecolor">General Settings</h4>
+                </div>
+                <div class="col-md-7 align-self-center text-right">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/settings/general">Settings</a></li>
+                            <li class="breadcrumb-item active">General Settings</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">General Settings</h4>
+                            <h5 class="box-title m-b-20">
+                            </h5>
+
+                            <form class="form p-t-10" enctype="multipart/form-data" action="/settings/general"  method="post">
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Title Web</label>
+                                    <input type="text" name="title_web" class="form-control" value="{{.Title_web}}" placeholder="Title Website" aria-label="Title Website" aria-describedby="basic-addon1">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Subtitle Web</label>
+                                    <input type="text" name="subtitle_web" class="form-control" value="{{.Subtitle_web}}" placeholder="Subtitle Website" aria-label="Subtitle Website" aria-describedby="basic-addon1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Contact Email</label>
+                                    <input type="text" name="email" class="form-control" value="{{.Email}}" placeholder="Contact Email" aria-label="Contact Email" aria-describedby="basic-addon1">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">Logo Website</label>
+                                    <div class="input-group mb-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img style="max-width:150px; max-height:150px" src="/Admin/theme1/images/settings/{{.Logo_web}}">
+                                                <br><br>
+                                                <input type="file" name="logo_web" id="input-file-max-fs" class="dropify" data-max-file-size="2M" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">Favicon Website</label>
+                                    <div class="input-group mb-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img style="max-width:150px; max-height:150px" src="/Admin/theme1/images/settings/{{.Favicon_web}}">
+                                                <br><br>
+                                                <input type="file" name="favicon_web" id="input-file-max-fs" class="dropify" data-max-file-size="2M" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10"> <i class="fa fa-save"></i> Update</button>
+                                <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+
+{{template "_footer.html"}}
+{{end}}

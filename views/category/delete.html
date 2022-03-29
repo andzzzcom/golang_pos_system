@@ -1,0 +1,89 @@
+{{define "categoryDelete"}}
+{{template "_header_settings.html"}}
+{{template "_header.html"}}
+{{template "_sidebar.html"}}
+{{template "_other.html"}}
+
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h4 class="text-themecolor">Remove Category</h4>
+                </div>
+                <div class="col-md-7 align-self-center text-right">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/category">Category</a></li>
+                            <li class="breadcrumb-item active">Remove Category</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Remove Category</h4>
+                                <h5 class="box-title m-b-20">
+
+                                </h5>
+
+                            <form class="form p-t-10" enctype="multipart/form-data" action="/category/delete_act" method="post" >
+                                <input type="hidden" name="id_category" value="{{.Id_category}}">
+                                 <div class="form-group">
+                                    <label for="exampleInputuname">Category Name</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
+                                        </div>
+                                        <input readonly type="text" name="name" value="{{.Name}}" class="form-control" placeholder="Product Name" aria-label="Product Name" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Status Category</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-server"></i></span>
+                                        </div>
+                                        <select readonly name="status" class="form-control custom-select">
+                                            <option {{ if eq .Status 1 }} selected {{ end }} value="1">Active</option>
+                                            <option {{ if eq .Status 0 }} selected {{ end }} value="0">Not Active</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10"> <i class="fa fa-save"></i> Remove Category</button>
+                                <a href="/category" class="btn btn-primary">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+
+{{template "_footer.html"}}
+{{end}}

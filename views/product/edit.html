@@ -1,0 +1,123 @@
+{{define "productEdit"}}
+{{template "_header_settings.html"}}
+{{template "_header.html"}}
+{{template "_sidebar.html"}}
+{{template "_other.html"}}
+
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h4 class="text-themecolor">Update Product</h4>
+                </div>
+                <div class="col-md-7 align-self-center text-right">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/product">Product</a></li>
+                            <li class="breadcrumb-item active">Update Product</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Update Product</h4>
+                                <h5 class="box-title m-b-20">
+
+                                </h5>
+
+                            <form class="form p-t-10" enctype="multipart/form-data" action="/product/edit_act" method="post" >
+                                <input type="hidden" name="id_product" value="{{.prod.Id_product}}">
+                                 <div class="form-group">
+                                    <label for="exampleInputuname">Product Name</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
+                                        </div>
+                                        <input type="text" name="name" value="{{.prod.Name}}" class="form-control" placeholder="Product Name" aria-label="Product Name" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Product Thumbnail</label>
+                                    <br>
+                                    <img src="/assets/Admin/theme1/images/product/{{.prod.Thumbnail}}" width="80px" height="80px">
+                                    <br><br>
+                                    <div class="input-group mb-3">
+                                        <input type="file" name="thumbnail">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Product Price</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-money"></i></span>
+                                        </div>
+                                        <input type="number" step="1" min="1" name="price" value="{{.prod.Price}}" class="form-control" placeholder="Product Price" aria-label="Product Price" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Category</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
+                                        </div>
+                                        <select name="category" class="form-control">
+                                            {{range $i, $x := .cat}}
+                                                <option {{ if eq $.prod.Category $x.Id_category}} selected {{ end }} value="{{$x.Id_category}}">{{$x.Name}}</option>
+                                            {{end}}
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">Status Product</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-server"></i></span>
+                                        </div>
+                                        <select name="status" class="form-control custom-select">
+                                            <option {{ if eq .prod.Status 1 }} selected {{ end }} value="1">Active</option>
+                                            <option {{ if eq .prod.Status 0 }} selected {{ end }} value="0">Not Active</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10"> <i class="fa fa-save"></i> Update Product</button>
+                                <a href="/product" class="btn btn-primary">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+
+{{template "_footer.html"}}
+{{end}}

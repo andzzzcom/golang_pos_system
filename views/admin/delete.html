@@ -1,0 +1,146 @@
+{{define "adminDelete"}}
+{{template "_header_settings.html"}}
+{{template "_header.html"}}
+{{template "_sidebar.html"}}
+{{template "_other.html"}}
+
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h4 class="text-themecolor">Remove Admin</h4>
+                </div>
+                <div class="col-md-7 align-self-center text-right">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
+                            <li class="breadcrumb-item active">Remove Admin</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Remove Admin</h4>
+                            <h5 class="box-title m-b-20">
+                            </h5>
+                            <form class="form p-t-10" enctype="multipart/form-data" action="/admin/delete_act" method="post" >
+                                <input type="hidden" name="id_admin" value="{{.Id_admin}}">
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Admin Name</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
+                                        </div>
+                                        <input readonly type="text" value="{{.Name}}" name="name" class="form-control" placeholder="Admin Name" aria-label="Admin Name" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Admin Email</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-envelope"></i></span>
+                                        </div>
+                                        <input readonly type="email" value="{{.Email}}" name="email" class="form-control" placeholder="Admin Email" aria-label="Admin Email" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Admin Avatar</label>
+                                    <br>
+                                    <img src="/assets/Admin/theme1/images/admin/{{.Avatar}}" width="80px" height="80px">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Admin Phone</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-server"></i></span>
+                                        </div>
+                                        <input readonly type="text" value="{{.Phone}}" name="phone" class="form-control" placeholder="Admin Phone" aria-label="Admin Phone" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Admin Address</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-home"></i></span>
+                                        </div>
+                                        <input readonly type="text" value="{{.Address}}" name="address" class="form-control" placeholder="Admin Address" aria-label="Admin Address" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Admin Born Place</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-home"></i></span>
+                                        </div>
+                                        <input readonly type="text" value="{{.Born_place}}" name="born_place" class="form-control" placeholder="Admin Born Place" aria-label="Admin Born Place" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">Gender Admin</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-server"></i></span>
+                                        </div>
+                                        <select readonly name="gender" class="form-control custom-select">
+                                            <option {{ if eq .Gender 1 }} selected {{ end }} value="1">Active</option>
+                                            <option {{ if eq .Gender 0 }} selected {{ end }} value="0">Not Active</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">Status Admin</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-server"></i></span>
+                                        </div>
+                                        <select readonly name="status" class="form-control custom-select">
+                                            <option {{ if eq .Status 1 }} selected {{ end }} value="1">Active</option>
+                                            <option {{ if eq .Status 0 }} selected {{ end }} value="0">Not Active</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10"> <i class="fa fa-save"></i> Remove Admin</button>
+                                <a href="/admin" class="btn btn-primary">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+
+{{template "_footer.html"}}
+{{end}}

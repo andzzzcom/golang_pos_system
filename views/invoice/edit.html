@@ -1,0 +1,112 @@
+{{define "invoiceEdit"}}
+{{template "_header_settings.html"}}
+{{template "_header.html"}}
+{{template "_sidebar.html"}}
+{{template "_other.html"}}
+
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h4 class="text-themecolor">Update Invoice</h4>
+                </div>
+                <div class="col-md-7 align-self-center text-right">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/invoice">Invoice</a></li>
+                            <li class="breadcrumb-item active">Update Invoice</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Update Invoice</h4>
+                            <h5 class="box-title m-b-20">
+                            </h5>
+                            <form class="form p-t-10" enctype="multipart/form-data" action="/invoice/edit_act" method="post" >
+                                <input type="hidden" name="id_invoice" value="{{.inv.Id_invoice}}">
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Invoice Code</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
+                                        </div>
+                                        <input type="text" value="{{.inv.Invoice_code}}" name="invoice_code" class="form-control" placeholder="Invoice Code" aria-label="Invoice Code" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Product</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-image"></i></span>
+                                        </div>
+                                        <select class="form-control" name="id_product">
+                                            {{range $i, $x := .prod}}
+                                                <option {{ if eq $.invD.Id_product $x.Id_product }} selected {{ end }}  value="{{$x.Id_product}}">{{$x.Name}}</option>
+                                            {{end}}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Tax Price</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="ti-money"></i></span>
+                                        </div>
+                                        <input type="number" value="{{.inv.Tax_price}}" step="1" min="1" name="tax_price" class="form-control" placeholder="Tax Price" aria-label="Tax Price" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Status Invoice</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-server"></i></span>
+                                        </div>
+                                        <select name="status" class="form-control custom-select">
+                                            <option {{ if eq .inv.Status 1 }} selected {{ end }} value="1">Active</option>
+                                            <option {{ if eq .inv.Status 0 }} selected {{ end }} value="0">Not Active</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10"> <i class="fa fa-save"></i> Update Invoice</button>
+                                <a href="/invoice" class="btn btn-primary">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+
+{{template "_footer.html"}}
+{{end}}
